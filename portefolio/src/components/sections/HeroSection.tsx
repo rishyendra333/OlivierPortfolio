@@ -32,10 +32,13 @@ export default function HeroSection() {
           </div>
           <div className="flex justify-center">
             <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-blue-600">
-              {/* Replace with actual image */}
-              <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-                <span className="text-gray-600 text-lg">Profile Photo</span>
-              </div>
+            <Image 
+                src="/turing.png" 
+                alt="Alan Turing" 
+                fill 
+                style={{ objectFit: 'cover' }}
+                priority
+              />
             </div>
           </div>
         </div>

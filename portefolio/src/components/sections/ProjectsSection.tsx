@@ -6,6 +6,7 @@ type Project = {
   description: string;
   tags: string[];
   link: string;
+  image: string;
 };
 
 export default function ProjectsSection() {
@@ -15,42 +16,48 @@ export default function ProjectsSection() {
       title: "Turing Machine",
       description: "A mathematical model of computation defining an abstract machine that manipulates symbols on a strip of tape according to a table of rules.",
       tags: ["Theory of Computation", "Mathematics"],
-      link: "#"
+      link: "#",
+      image: "/turing-machine.webp"
     },
     {
       id: 2,
       title: "Enigma Code Breaker",
       description: "Development of techniques and machines to break German Enigma machine ciphers during World War II.",
       tags: ["Cryptography", "Wartime Innovation"],
-      link: "#"
+      link: "#",
+      image: "/turing-enigma.webp"
     },
     {
       id: 3,
       title: "Computing Machinery and Intelligence",
       description: "Research paper introducing the 'Turing Test' for evaluating machine intelligence.",
       tags: ["Artificial Intelligence", "Philosophy"],
-      link: "#"
+      link: "#",
+      image: "/turing-test.webp"
     },
     {
       id: 4,
       title: "ACE Computer Design",
       description: "Detailed design for the Automatic Computing Engine, one of the first designs for a stored-program computer.",
       tags: ["Computer Architecture", "Hardware Design"],
-      link: "#"
+      link: "#",
+      image: "/turing-ace.webp"
     },
     {
       id: 5,
       title: "Morphogenesis",
       description: "Mathematical model of pattern formation in biological systems, explaining how patterns like stripes and spots occur in nature.",
       tags: ["Mathematical Biology", "Pattern Formation"],
-      link: "#"
+      link: "#",
+      image: "/turing-morpho.webp"
     },
     {
       id: 6,
       title: "Manchester Computer",
       description: "Contribution to the development of the Manchester Mark 1, one of the earliest electronic stored-program computers.",
       tags: ["Computer Engineering", "Hardware"],
-      link: "#"
+      link: "#",
+      image: "/turing-manchester.webp"
     }
   ];
 
@@ -63,8 +70,15 @@ export default function ProjectsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div key={project.id} className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition">
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-500 dark:text-gray-400">Project Image</span>
+              <div className="relative h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                <Image 
+                  src={project.image} 
+                  alt={`${project.title} project thumbnail`}
+                  fill 
+                  style={{ objectFit: 'cover' }}
+                  // Only prioritize the first few images
+                  priority={project.id <= 3}
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
